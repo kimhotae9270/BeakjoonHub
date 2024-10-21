@@ -29,7 +29,8 @@ for i in range(n):
             cntLst.append(cnt)
             cnt = 0
 print(len(cntLst))
-for i in sorted(cntLst):
+cntLst.sort()
+for i in cntLst:
     print(i)
 
 
