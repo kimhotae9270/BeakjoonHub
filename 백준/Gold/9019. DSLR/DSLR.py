@@ -1,38 +1,35 @@
 import sys
 from collections import deque
-T = int(input())
+t = int(sys.stdin.readline())
 
-for _ in range(T):
-    A, B = map(int,sys.stdin.readline().rstrip().split())
+for i in range(t):
+    x,y = map(int,sys.stdin.readline().split())
+    vis = [0 for _ in range(10001)]
+    q = deque()
+    q.append([x,''])
+    vis[x] = 1
+    while q:
+        num,cmd = q.popleft()
 
-    visited = [False for i in range(10001)]
-    deq = deque()
-    deq.append([A,''])
-    visited[A] = True
-
-    while deq:
-        num, command = deq.popleft()
-
-        if num == B:
-            print(command)
+        if num == y:
+            print(cmd)
             break
-
         d = num * 2 % 10000
-        if not visited[d]:
-            visited[d] = True
-            deq.append([d, command + 'D'])
-
+        if not vis[d]:
+            vis[d] = 1
+            q.append([d,cmd+"D"])
         s = (num - 1) % 10000
-        if not visited[s]:
-            visited[s] = True
-            deq.append([s, command + 'S'])
+        if not vis[s]:
+            vis[s] = 1
+            q.append([s,cmd+"S"])
+        l = (num//1000) + (num%1000)*10
+        if not vis[l]:
+            vis[l] = 1
+            q.append([l,cmd + "L"])
+        r = num//10+(num%10)*1000
+        if not vis[r]:
+            vis[r] = 1
+            q.append([r,cmd+"R"])
 
-        l = num // 1000 + (num % 1000)*10
-        if not visited[l]:
-            visited[l] = True
-            deq.append([l, command + 'L'])
 
-        r = num // 10 + (num % 10) * 1000
-        if not visited[r]:
-            visited[r] = True
-            deq.append([r, command + 'R'])
+
