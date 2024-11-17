@@ -18,7 +18,4 @@ for i in range(t):
                 nx,ny = k+y,z+x
                 if 0<=ny<2 and 0<=nx<n:
                     dp[z][k] = max(dp[z][k],dp[ny][nx]+lst[z][k])
-    maxi = 0
-    for l in dp:
-        maxi = max(maxi,max(l))
-    print(maxi)
+    print(max(dp[0][n-1],dp[1][n-1]))
