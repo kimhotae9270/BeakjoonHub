@@ -1,26 +1,37 @@
 import sys
-input = sys.stdin.readline
-sys.setrecursionlimit(10000)
+from collections import deque
+def bfs(start):
+    q = deque([start])
+    global cnt
+    global chk
+    global result
+    vis[start] = 1
+    while q:
+        x = q.popleft()
+        for i in lst[x]:
+            if not vis[i]:
+                vis[i] = 1
+                q.append(i)
+                cnt += 1
 
-n, m = map(int, input().split())
-edges = [[] for i in range(n+1)]
+    if result == cnt:
+        chk.append(start)
+    elif result < cnt:
+        chk = [start]
+        result = cnt
+
+
+n,m = map(int,sys.stdin.readline().split())
+lst = [[] for __ in range(n+1)]
 for i in range(m):
-    a, b = map(int, input().split())
-    edges[b].append(a)
+    start,end = map(int,sys.stdin.readline().split())
+    lst[end].append(start)
 
-def dfs(x):
-    visit = [0]*(n+1)
-    visit[x] = 1
-    stack = [x]
-    while stack:
-        com = stack.pop()
-        for c in edges[com]:
-            if not visit[c] :
-                visit[c] = 1
-                stack.append(c)
-    return sum(visit)
+result = -1
+chk = []
+for i in range(1,n+1):
+    vis = [0 for _ in range(n + 1)]
+    cnt = 0
+    bfs(i)
 
-com = [dfs(i) for i in range(1, n+1)]
-_max = max(com)
-for i in range(n):
-    if com[i]==_max : print(i+1, end=' ')
+print(*chk)
