@@ -1,11 +1,10 @@
 import sys
 def dfs(start,cnt):
-
+    global lst2
     if len(result) > len(lst):
         lst2.append(result[:])
         return
-    if cnt > len(lst) - 1:
-        return
+
     if lst[cnt] == "<":
         for i in range(start+1,10):
             if not vis[i]:
