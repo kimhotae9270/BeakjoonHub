@@ -4,10 +4,9 @@ _in = {}
 _out = {}
 for i in range(n):
     _in[sys.stdin.readline().rstrip()] = i
-for i in range(n):
-    _out[sys.stdin.readline().rstrip()] = i
+out_keys = list(sys.stdin.readline().rstrip() for _ in range(n))
 cnt = 0
-out_keys = list(_out.keys())
+
 for i in range(0, len(out_keys)):
     now_in = _in[out_keys[i]]
     for j in range(i+1, len(out_keys)):
