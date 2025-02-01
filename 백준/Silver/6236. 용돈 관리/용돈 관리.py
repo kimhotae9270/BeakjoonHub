@@ -2,7 +2,7 @@ import sys
 
 n,m = map(int,sys.stdin.readline().split())
 lst = list(int(sys.stdin.readline()) for _ in range(n))
-start = max(lst)
+start = 0
 end = sum(lst)
 
 while start <= end:
