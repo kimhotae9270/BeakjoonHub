@@ -5,12 +5,12 @@ while 1:
     if lst == "-1":
         break
     lst = list(map(int,lst.split()))
-    lst.sort()
+
 
     n = 0
 
-    for i in range(1,len(lst)):
-        if lst[i] * 2 in lst[1:]:
+    for i in range(len(lst)-1):
+        if lst[i] * 2 in lst[:len(lst)-1]:
 
             n += 1
 
