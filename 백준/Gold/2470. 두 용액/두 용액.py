@@ -17,17 +17,14 @@ while 1:
     if chk > abs(val):
         chk = abs(val)
         result = [lst[start], lst[end]]
-        if val > 0:
-            end -= 1
-        elif val < 0:
-            start += 1
-        elif val == 0:
-            break
-        continue
     if val > 0:
         end -= 1
     elif val < 0:
         start += 1
+    elif val == 0:
+        break
+
+
 
 
 
