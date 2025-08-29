@@ -1,18 +1,18 @@
-from sys import stdin
+import sys
 
-left = list(input())
+left = list(sys.stdin.readline().rstrip('\n')) 
 right = []
 
-for _ in range(int(input())):
-    command = list(stdin.readline().split())
-    if command[0] == 'L' and left:
-        right.append(left.pop())
-    elif command[0] == 'D' and right:
+for _ in range(int(sys.stdin.readline())):
+    cmd = list(sys.stdin.readline().split())
+    if cmd[0] == 'L' and left:
+        right.append((left.pop()))
+    elif cmd[0] == 'D' and right:
         left.append(right.pop())
-    elif command[0] == 'B' and left:
+    elif cmd[0] == 'B' and left:
         left.pop()
-    elif command[0] == 'P':
-        left.append(command[1])
+    elif cmd[0] == 'P':
+        left.append(cmd[1])
 
-answer = left + right[::-1]
-print(''.join(answer))
+result = left+right[::-1]
+print(''.join(result))
