@@ -7,7 +7,5 @@ while result <= s:
     cnt += 1
     result += cnt
 
-if result == s:
-    print(cnt)
-else:
-    print(cnt - 1)
+
+print(cnt - 1)
